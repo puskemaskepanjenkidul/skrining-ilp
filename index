@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKRINING ILP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            text-align: center;
+        }
+        h1 {
+            color: blue;
+        }
+        .text-to-read {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>SKRINING ILP</h1>
+    <div>
+        <a href="#" class="text-to-read" data-text="Skrining Layak Hamil">SKRINING LAYAK HAMIL</a>
+        <a href="#" class="text-to-read" data-text="Skrining Hipertensi">SKRINING HIPERTENSI</a>
+        <a href="#" class="text-to-read" data-text="Skrining Diabetes">SKRINING DIABETES MELITUS</a>
+    </div>
+
+    <script>
+        function speakText(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(utterance);
+        }
+
+        const textElements = document.querySelectorAll('.text-to-read');
+
+        textElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                const textToSpeak = element.getAttribute('data-text');
+                speakText(textToSpeak);
+            });
+
+            element.addEventListener('click', () => {
+                const textToSpeak = element.getAttribute('data-text');
+                speakText(textToSpeak);
+            });
+        });
+    </script>
+</body>
+</html>
